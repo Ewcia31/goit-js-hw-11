@@ -33,12 +33,12 @@ const displayImages = (hits, totalHits) => {
     const markupArray = hits.map(
       ({
         webformatURL,
-        largeImageURL, //added for SimpleLightbox
-        tags, //added for SimpleLightbox
+        largeImageURL,
+        tags,
         likes,
         views,
         comments,
-        downloads, // added BELOW for SimpleLightbox
+        downloads,
       }) => `<div class="photo-card"><a class="gallery__item" href="${largeImageURL}"> 
   <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy" /></a> 
   <div class="info"> 
@@ -51,14 +51,14 @@ const displayImages = (hits, totalHits) => {
     );
     gallery.innerHTML = gallery.innerHTML + markupArray.join('');
 
-    const { height: cardHeight } = document //smooth scroll start
+    const { height: cardHeight } = document
       .querySelector('.gallery')
       .firstElementChild.getBoundingClientRect();
 
     window.scrollBy({
       top: cardHeight * 2,
       behavior: 'smooth',
-    }); //smooth scroll end
+    });
 
     if (totalHits > gallery.children.length) {
       loadMoreButton.style.display = 'block';
@@ -75,7 +75,7 @@ const displayImages = (hits, totalHits) => {
       Notiflix.Notify.info(`Hooray! We found ${totalHits} images.`);
     }
 
-    lightbox = new SimpleLightbox('.gallery a'); //added SimpleLightbox
+    lightbox = new SimpleLightbox('.gallery a');
   }
 };
 
